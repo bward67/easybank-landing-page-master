@@ -1,0 +1,724 @@
+/*------------------
+    VARIABLES
+-------------------*/
+:root {
+  --clr-p-dark-blue: hsl(233, 26%, 24%);
+  --clr-p-lime-green: hsl(136, 65%, 51%);
+  --clr-p-bright-cyan: hsl(192, 70%, 51%);
+  --clr-linear-gradient: linear-gradient(
+    to right,
+    hsl(136, 65%, 51%),
+    hsl(192, 70%, 51%)
+  );
+
+  --clr-grayish-blue: hsl(233, 8%, 62%);
+  --clr-light-grayish-blue: hsl(220, 16%, 96%);
+  --clr-very-light-gray: hsl(0, 0%, 98%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --br-sml: 0.3rem;
+  --br-btns: 100px;
+  --br-art-imgs: 0.3rem 0.3rem 0 0;
+}
+
+/*------------------
+    RESET
+-------------------*/
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/*------------------
+    GLOBAL STYLES
+-------------------*/
+body {
+  font-style: 18px;
+  font-family: "Public Sans", sans-serif;
+  display: grid;
+  place-items: center;
+  color: var(--clr-grayish-blue);
+}
+img {
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--clr-p-dark-blue);
+  font-weight: var(--fw-300);
+}
+h1 {
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: var(--fw-400);
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-weight: var(--fw-400);
+}
+h4 {
+  font-weight: var(--fw-400);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+h6 {
+  color: var(--clr-grayish-blue);
+  font-size: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+p {
+  line-height: 1.7;
+}
+.container {
+  width: 85%;
+  margin: 0 auto !important;
+}
+ul li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--clr-grayish-blue);
+}
+.active {
+  display: block;
+}
+.overlay {
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: hsla(233, 26%, 24%, 0.75);
+  display: none;
+  z-index: 10;
+}
+
+button {
+  padding: 1rem;
+  border-radius: var(--br-btns);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.btn-dark {
+  background-image: linear-gradient(
+    /*remember to use bg image and not bg color*/ to right,
+    hsl(136, 65%, 51%),
+    hsl(192, 70%, 51%)
+  );
+  color: var(--clr-white);
+  font-weight: var(--fw-700);
+}
+.btn-dark:hover {
+  filter: brightness(150%); /*this was new to me*/
+}
+/*------------------
+    NAV-BAR
+-------------------*/
+.nav-desktop {
+  display: none;
+}
+.nav-mobile {
+  width: 100%;
+  background-color: var(--clr-white);
+  padding-block: 1.5rem;
+  position: fixed;
+  z-index: 20;
+}
+
+.nav-mobile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mobile-menu-btn {
+  position: relative;
+  width: 1.3rem;
+  height: 1.3rem;
+  display: grid;
+  place-items: center;
+}
+.mobile-menu-btn img {
+  position: absolute;
+}
+.close-btn {
+  display: none;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  background: var(--clr-white);
+  text-align: center;
+  padding: 2rem;
+  border-radius: var(--br-sml);
+  z-index: 5000;
+  width: 90%;
+}
+
+.nav-dropdown-menu ul li:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.nav-dropdown-menu ul li a:hover {
+  color: var(--clr-p-dark-blue);
+}
+
+/*------------------
+    INTRO
+-------------------*/
+.intro-img-desktop {
+  display: none;
+}
+.intro {
+  text-align: center;
+}
+.intro-img-container {
+  background-image: url(images/bg-intro-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: 0 1.2rem; /*using % did not work ??
+  it should be left and top*/
+  display: grid;
+  z-index: -2;
+}
+.intro p {
+  font-size: 0.9rem;
+}
+.intro-img-mobile {
+  margin: -3.4rem auto 2rem auto;
+  width: 95%;
+}
+.intro button {
+  margin-block: 2rem 8rem;
+  width: 60%;
+}
+
+/*------------------
+    WHY CHOOSE
+-------------------*/
+.why-choose {
+  text-align: center;
+}
+.why-choose-firstp {
+  margin-block: 1.5rem 4rem;
+  font-size: 0.9rem;
+}
+.why-choose-cols p {
+  margin-block: 1.2rem 2rem;
+  font-size: 0.88rem;
+}
+.why-choose-cols img {
+  margin-bottom: 1.2rem;
+}
+/*------------------
+    ARTICLES
+-------------------*/
+.articles h2 {
+  margin-block: 10rem 2rem;
+  text-align: center;
+}
+
+.article-cols-content {
+  width: 85%;
+  margin: 0 auto;
+  margin-block: 2rem 4rem;
+}
+.article-cols-content p {
+  font-size: 0.805rem;
+}
+.article-cols img {
+  border-radius: var(--br-art-imgs);
+}
+.articles h4:hover {
+  color: var(--clr-p-bright-cyan);
+  cursor: pointer;
+}
+
+/*------------------
+    FOOTER
+-------------------*/
+footer a {
+  color: var(--clr-very-light-gray);
+}
+footer a:hover {
+  color: var(--clr-p-bright-cyan);
+}
+.footer-left-2,
+.footer-left-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer {
+  background-color: var(--clr-p-dark-blue);
+  margin-top: 8rem;
+  text-align: center;
+  padding-block: 3rem 4rem;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 2rem 3rem;
+  gap: 1rem;
+  cursor: pointer;
+}
+footer button {
+  width: 40%;
+  margin-block: 1.5rem;
+}
+.twitter,
+.facebook,
+.youtube,
+.pinterest,
+.instagram {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: grid;
+  place-items: center;
+}
+
+.twitter-white,
+.twitter-color,
+.facebook-white,
+.facebook-color,
+.youtube-white,
+.youtube-color,
+.pinterest-white,
+.pinterest-color,
+.instagram-white,
+.instagram-color {
+  position: absolute;
+}
+.twitter-color,
+.facebook-color,
+.youtube-color,
+.pinterest-color,
+.instagram-color {
+  display: none;
+}
+/* THIS DOES'T WORK ??
+.twitter:hover {
+  fill: cyan;
+}*/
+
+/*!------------------
+/*!   MEDIA QUERIES
+/*!-------------------*/
+@media (min-width: 375px) {
+  .intro-img-container {
+    background-image: url(images/bg-intro-mobileBigger.svg);
+    background-position: -2rem 3rem !important;
+  }
+}
+
+@media (min-width: 475px) {
+  .intro-img-container {
+    background-image: url(images/bg-intro-desktop.svg);
+    background-position: -4rem -12.2rem !important;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 568px) {
+  .nav-mobile {
+    display: none;
+  }
+  .nav-desktop {
+    display: block;
+    position: fixed;
+    background-color: var(--clr-white);
+    width: 100%;
+    padding-block: 1rem;
+    z-index: 10000;
+  }
+  .nav-desktop-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-desktop-logo {
+    width: 15%;
+  }
+
+  .nav-desktop-links ul {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+  }
+
+  .nav-desktop-links ul a:hover {
+    color: var(--clr-p-dark-blue);
+  }
+  .nav-desktop-links ul li a:hover::after {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: var(--clr-linear-gradient);
+  }
+  .container {
+    width: 85%;
+  }
+  .btn-dark {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.5rem;
+  }
+
+  .nav-desktop a {
+    font-size: 0.6rem;
+    padding: 0; /*it's not this*/
+  }
+  .intro {
+    background-color: var(--clr-very-light-gray);
+    text-align: left;
+    position: relative;
+  }
+
+  .intro-img-mobile {
+    display: none;
+  }
+  .intro-img-desktop {
+    position: absolute;
+    display: block;
+    top: 5%;
+    left: 50%;
+    width: 60%;
+    height: 100%;
+    z-index: 500;
+  }
+
+  .intro-img-container {
+    background-position: 15rem -3rem !important;
+    background-size: 90%;
+    height: 30rem; /*I have to give this a height or it disappears??*/
+    margin-bottom: 0;
+    z-index: 30;
+  }
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .intro-content-container {
+    padding: 0 23rem 0 0;
+    margin-top: -22rem !important;
+  }
+
+  .intro .btn-dark {
+    width: 6rem;
+    padding-inline: 1rem !important;
+    margin: 0 0 4rem 0 !important;
+  }
+  /*
+  .intro-content-container h1 {
+    margin-right: 0 !important;
+  }*/
+  .intro-content-container p {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    /*margin-right: 0 !important;
+    margin-block: 1rem 1.5rem !important;*/
+  }
+  .why-choose {
+    background-color: var(--clr-light-grayish-blue);
+    text-align: left;
+    position: relative;
+    z-index: 40;
+    /*padding-top: 2rem;*/
+    /*margin-top: -6rem;*/
+  }
+  .why-choose h2 {
+    padding-top: 4rem;
+  }
+  .why-choose-firstp {
+    padding: 1rem 12rem 4rem 0;
+  }
+
+  .why-choose-cols,
+  .articles-image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .why-choose-cols p {
+    line-height: 1.4;
+    margin-block: 1.5rem 4rem;
+  }
+
+  .articles h2 {
+    margin-block: 4rem 2rem;
+    text-align: left !important;
+  }
+  .articles img {
+    height: 221px;
+    width: 100%;
+    object-fit: cover;
+  }
+  footer {
+    margin-top: 0;
+    padding: 1rem 0;
+  }
+  .footer-logo {
+    width: 70%;
+  }
+
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+  }
+  .footer-left {
+    display: flex;
+    text-align: left;
+    gap: 1.5rem;
+  }
+  .footer-left-1 {
+    display: grid;
+    justify-items: center;
+  }
+  .footer-left-2,
+  .footer-left-3 {
+    font-size: 0.7rem;
+    gap: 0.8rem;
+  }
+  .footer-right {
+    text-align: right;
+  }
+  .copywrite {
+    font-size: 0.6rem;
+    margin-top: -0.5rem;
+  }
+  footer .btn-dark {
+    width: 80%;
+  }
+
+  .socials {
+    gap: 0.6rem;
+    margin-top: 1.8rem;
+  }
+  .twitter,
+  .facebook,
+  .youtube,
+  .pinterest,
+  .instagram {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .intro-img-desktop {
+    height: 100%;
+  }
+  .intro-img-desktop img {
+    position: absolute;
+    z-index: 101000 !important;
+    height: 100%;
+  }
+
+  .intro-img-container {
+    background-position: 18rem -6rem !important;
+    background-size: 100%;
+    /*height: 28rem; If I give this a height it disappears*/
+  }
+
+  .intro-content-container {
+    margin-top: -18rem !important;
+    padding-right: 24rem;
+  }
+  .intro-btn-dark {
+    margin-right: 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  .intro-img-container {
+    background-position: 24rem -6rem !important;
+  }
+  .intro-content-container {
+    /*margin-top: -18rem !important;*/
+    padding-right: 28rem;
+  }
+}
+@media (min-width: 900px) {
+  .why-choose-cols,
+  .articles-image-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .intro-img-container {
+    background-position: 25rem -5rem;
+  }
+  .intro-img-desktop img {
+    margin: -4.5rem 0 0 4rem;
+    width: 80%;
+    height: auto;
+  }
+  .intro-content-container {
+    /*margin-top: -18rem !important;*/
+    padding-right: 31rem;
+  }
+
+  .nav-desktop-links ul a {
+    position: relative;
+    padding-bottom: 0rem;
+  }
+  .container {
+    width: 80%;
+  }
+  .why-choose-firstp {
+    padding-right: 20rem;
+  }
+}
+
+@media (min-width: 1060px) {
+  .nav-desktop {
+    position: relative;
+    z-index: 3000000;
+  }
+  .nav-desktop a {
+    font-size: 1rem;
+  }
+  nav .btn-dark {
+    padding: 0.6rem 1.3rem;
+  }
+  .intro-img-container {
+    background-position: 30rem -13rem !important;
+  }
+  .intro-btn-dark {
+    margin-bottom: 8rem;
+  }
+
+  .intro-content-container {
+    padding-right: 40rem;
+  }
+  .why-choose {
+    margin-top: -8rem;
+  }
+  .why-choose-firstp {
+    padding-right: 26rem;
+  }
+  .intro-img-desktop {
+    position: relative;
+    z-index: 1000000;
+  }
+
+  .intro .btn-dark {
+    width: 40%;
+    padding-block: 0.8rem;
+  }
+  .footer-left {
+    gap: 6rem;
+  }
+  footer {
+    padding-bottom: 0;
+  }
+}
+@media (min-width: 1140px) {
+  .intro-img-container img {
+    margin-top: -10rem;
+  }
+}
+
+@media (min-width: 1250px) {
+  .intro-img-container {
+    background-position: 32rem -12rem !important;
+    height: 40rem;
+  }
+  .intro-content-container {
+    /*margin-top: -18rem !important;*/
+    padding-right: 48rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    max-width: 1440px;
+  }
+  .nav-desktop a {
+    font-size: 1.2rem;
+  }
+  .nav-desktop-links ul {
+    gap: 2rem;
+  }
+  .nav-desktop .btn-dark {
+    font-size: 1rem;
+  }
+  .intro-img-container {
+    background-position: 42rem -14rem !important;
+    background-size: 80%;
+    height: 40rem;
+  }
+  .intro-img-container img {
+    margin: -8.6rem 0 0 9rem;
+  }
+  .intro .btn-dark {
+    margin-block: 1rem 8rem !important;
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  .intro-content-container p {
+    font-size: 1.05rem;
+  }
+  .intro-content-container {
+    margin-top: -28rem !important;
+    padding-right: 45.5rem;
+  }
+  .why-choose {
+    padding-top: 2rem;
+  }
+  .why-choose-firstp {
+    padding-right: 40rem;
+  }
+  footer {
+    padding-top: 1.5rem;
+  }
+  footer a {
+    font-size: 0.8rem;
+  }
+  .footer-left {
+    gap: 9rem;
+  }
+  footer .btn-dark {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    width: 0%8;
+  }
+  .copywrite {
+    font-size: 1rem;
+  }
+  .footer-wrapper {
+    align-items: first baseline;
+  }
+  .footer-logo {
+    width: 80%;
+  }
+  .socials {
+    gap: 0.85rem;
+  }
+}
